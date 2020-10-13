@@ -1,4 +1,11 @@
+include::../../../variables.adoc[]
+
 = Actionlog
+
+[NOTE]
+====
+{PRODUCT_NAME} Federation uses our *built-in logging facility* that is used to log events, such as *errors*, *warning* and *operations* that occurred in the system.
+====
 
 == Federation node actions
 

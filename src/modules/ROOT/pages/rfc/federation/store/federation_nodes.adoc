@@ -1,15 +1,15 @@
-.Store definition for `federation nodes`.
+.Federation nodes store definition.
 [cols="1s,1l,3a"]
 |===
 |Field |Type |Description
 
-|ID |uint64 |Specifies the node's identifier.
-|Name |string |Specifies the node's name.
-|SharedNodeID |uint64 |Specifies the paired node's identifier.
+|ID |uint64 |Specifies the node identifier.
+|Name |string |Specifies the node name.
+|SharedNodeID |uint64 |Specifies the paired node identifier.
 |BaseURL |string |Specifies the base URL of the paired node.
 |Status |string |Specifies the node's status.
-|PairToken |string |Specifies the OTT token that should be used for the node pairing process.
-|AuthToken |string |Specifies the auth token that should be used when accessing protected resources on the paired node.
+|PairToken |string |Specifies the OTT token that the node pairing process uses.
+|AuthToken |string |Specifies the authentication token that we should use when accessing protected resources.
 |CreatedBy |uint64 |Specifies who created the federated node.
 |UpdatedBy |uint64 |Specifies who updated the federated node.
 |DeletedBy |uint64 |Specifies who deleted the federated node.

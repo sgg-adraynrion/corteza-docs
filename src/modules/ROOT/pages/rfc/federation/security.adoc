@@ -1,20 +1,22 @@
+include::../../variables.adoc[]
+
+[#federation-security]
 = Security
 
-[#rfc:federation:security:authentication]
 == Authentication
 
-Federated nodes leverage Corteza's already established authentication facility that uses *system user* and *JWT tokens* (later referred as a *token*).
-During the pairing process between the two nodes, both nodes create a system user and securely exchange their authentication tokens.
+{PRODUCT_NAME} Federation leverages Corteza's already established authentication facility that uses *system users* and *JWT tokens* (later referred as a *token*) as a means to authenticate requests.
+The system user creation and authentication token exchange occur during the <<node-pairing,node pairing>> process between the two nodes.
 
-* Node A defines a *system user* and *token A* that allows node B to access protected resources,
-* node B defines a *system user* and *token B* that allows node A to access protected resources.
+* *Node A* defines a *system user* and *token A* that allows *node B* to access protected resources.
+* *Node B* defines a *system user* and *token B* that allows *node A* to access protected resources.
 
-Whenever *node A* wishes to access protected resources on *node B*, it uses *token B* for authentication; vice-versa for node B accessing protected resources on node A.
+Whenever *node A* wishes to access protected resources on *node B*, it uses *token B* for authentication; vice-versa for *node B* accessing protected resources on *node A*.
 
 [IMPORTANT]
 ====
 System users and authentication tokens are *unique for each node pair*.
-When a new node is added to the federated network, a new pair of system users and tokens are generated.
+When we add a new node to the federated network, the <<node-pairing,node pairing> process *generates a new* pair of system users and authentication tokens.
 ====
 
 [IMPORTANT]
@@ -22,16 +24,16 @@ When a new node is added to the federated network, a new pair of system users an
 Token A and token B *are not the same*.
 ====
 
-[#rfc:federation:security:access-control]
+[#federation-access-control]
 == Access control
 
-The federation service uses Corteza's already established RBAC access control facility that operates over *user roles*, *system resources* and *operations* over given resources.
+The federation service uses our *RBAC access control facility* that operates over *user roles*, *system resources* and *operations* over given resources.
 
-Each node in a federated network has the ability to define what resources a paired node is *allowed* to access.
-This can be as simple as controlling access to records belonging to specific modules, or as detailed as controlling access to specific fields for specific modules.
+*Each node* in a federated network has the *ability to define* what resources a paired node is *allowed to access*.
+It can be as simple as controlling *access to records* belonging to specific modules, or as detailed as controlling *access to particular fields* for particular modules.
 
 .When a destination node requests data from the origin node, the origin node:
 * Passes the request through the access control facility to check if we are allowed to access the resource,
 * collects the requested data, following the defined RBAC permissions, excluding data that the destination node is not allowed to access.
 
-The federation service then performs some additional operations, see <<rfc:federation:data-sync>>, and sends it over to the destination node.
+The federation service then transforms the data into the correct form and sends it to the destination node (see <<data-syncing,data syncing>> for details).

@@ -1,6 +1,6 @@
 include::../../variables.adoc[]
 
-[#rfc:federation:node-pair]
+[#node-pairing]
 = Node pairing
 
 Node pairing is the process of establishing a federated network between two {PRODUCT_NAME} nodes with the intent of secure data sharing.

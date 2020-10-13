@@ -1,4 +1,4 @@
-[#rfc:federation:data-sync]
+[#data-syncing]
 = Syncing data
 
 The process of updating data on the destination node, based on the updated data source.

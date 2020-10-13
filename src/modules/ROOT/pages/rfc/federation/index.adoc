@@ -1,6 +1,6 @@
 include::../../variables.adoc[]
 
-= Federation
+= {PRODUCT_NAME} Federation
 
 .An abstract overview over the entire federation system.
 [plantuml,federation-overview,svg,role=sequence]
@@ -35,20 +35,20 @@ NodeA -> NodeB: Data sync
 ----
 
 Node pairing::
-    The process of establishing a federated network between two nodes.
-    After they are paired, they are able to securely exchange data.
-    Refer to <<rfc:federation:node-pair>> and <<rfc:federation:security:authentication>> for details.
+    <<node-pairing,Node pairing>> is the process of establishing a *federated network* between two nodes.
+    Nodes in a federated network are able to *<<federation-security,securely>> exchange information*.
+    Node pairing consists of two steps: <<pair-step1,node identification>> and <<pair-step2,node handshake>> that assure a secure exchange of authentication credentials.
 
 Structure syncing::
-    The process of determining what structures on the origin node (the one that contains the data), is exposed to it's destination node (the one that wishes to access the data).
-    The origin node has full control over what data the destination node is allowed to access.
-    This can be as simple as allowing access to only specific modules; and as complex as allowing access to only specific module fields.
-    Refer to <<rfc:federation:structure-sync>> and <<rfc:federation:security:access-control>> for details.
+    <<structure-syncing,Structure syncing>> is the process of determining the data structure the *origin node* is sharing with us, the *destination node*.
+    The origin node has *full control* of what information it wishes to share with its destination nodes.
+    The destination node has *full control* of *what information* we wish to collect and *how it should be stored*.
+    This allows us to share information between systems that may have a completely different data model structure.
 
 Data syncing::
-    The process of updating data on the destination node, based on the updated data source.
-    The destination node has the ability to determine what field from the origin node maps into what field in the destination node.
-    Refer to <<rfc:federation:data-sync>> for details.
+    <<data-syncing,Data syncing>> is the process of fetching the shared data from the *origin node* and storing it on the *destination node*.
+    The origin node provides data based on rules that specify *what structures* the destination node is allowed to access and the *<<federation-access-control,access control>> facility* that assures any sensitive information is excluded.
+    The destination node stores the provided data based on its *field mapping rules*.
 
 :leveloffset: +1
 
