@@ -5,11 +5,11 @@
 [IMPORTANT]
 ====
 Before the two nodes are paired, we are unable to determine what node is the data source and what node is the destination.
-To avoid confusion, we use _node A_ and _node B_ when referring to the two nodes.
+To avoid confusion, we use *node A* and *node B* when referring to the two nodes.
 ====
 
-Node URI::
-    The URI that identifies a federation node.
+Pair URI::
+    The URI identifier that identifies *node A* in order to initialize the pairing process.
 
 Node A::
     The node that wishes to include another node in it's federated network -- the node that initialized the pairing process.
@@ -45,9 +45,9 @@ Node status::
     The current status of the federated node.
     Can be one of the following:
 
-    * *Pairing*: the node is in the pairing process,
-    * *paired*: the node has been paired successfully,
-    * *failed*: the node failed to pair.
+    * *Pending*: the node is prepared and is waiting for the pairing process.
+    * *Pair requested*: the node is involved in the pairing process; either by initializing it, or by receiving a handshake request.
+    * *paired*: the node pairing process is complete; either by confirming the handshake request or by receiving a handshake complete request.
 
 Structure sync status::
     The current status of the structure sync.

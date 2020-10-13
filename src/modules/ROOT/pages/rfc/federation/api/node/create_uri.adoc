@@ -7,20 +7,23 @@ $API_B_BASE
 # Main administrator JWT for node B
 $MAIN_JWT_B
 
-# Node B nodeID
-$NODE_ID_B
+# Node pairing URI
+$PAIRING_URI
 ----
 
 .Example request
 [source,bash]
 ----
-curl -X POST "$API_B_BASE/federation/nodes/$NODE_ID_B/pair" \
+curl -X POST "$API_B_BASE/federation/nodes" \
   -H "authorization: Bearer $MAIN_JWT_B" \
-  --header "Content-Type: application/json";
+  --header "Content-Type: application/json" \
+  --data "{
+    \"pairingURI\": \"$PAIRING_URI\",
+  }";
 ----
 
 .Example response
 [source,bash]
 ----
-{}
+// @todo...
 ----

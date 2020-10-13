@@ -1,17 +1,20 @@
+include::../../../variables.adoc[]
+
 = Store
 
-== Federation node
+== Federation nodes
 
-include::node.adoc[]
+Federation nodes represent other {PRODUCT_NAME} instances that we wish to share information with.
+This includes all of the already paired nodes, along with the nodes that are still pending.
 
-== Exposed federation module
+include::federation_nodes.adoc[]
+
+== Exposed structures
 
 include::module_exposed.adoc[]
 
-== Shared federation module
+include::module_mapping.adoc[]
+
+== Shared structures
 
 include::module_shared.adoc[]
-
-== Federation module mapping
-
-include::module_mapping.adoc[]

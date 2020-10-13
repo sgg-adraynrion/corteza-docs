@@ -7,14 +7,15 @@ $API_A_BASE
 # Node A nodeID
 $NODE_ID_A
 
-# Node URI
-$NODE_URI
-
-# Node B auth token
-$TOKEN_B
+# Pairing token determined from the pair URI
+$PAIR_TOKEN
 
 # Node B nodeID
-$NODE_ID_B
+$NODE_B_ID
+
+# Node B auth token
+$AUTH_TOKEN
+
 ----
 
 .Example request
@@ -23,14 +24,14 @@ $NODE_ID_B
 curl -X POST "$API_A_BASE/federation/nodes/$NODE_ID_A/handshake" \
   --header "Content-Type: application/json" \
   --data "{
-    \"nodeURI\": \"$NODE_URI\",
-    \"token\": \"$TOKEN_B\",
-    \"nodeIDB\": \"$NODE_ID_B\"
+    \"pairToken\": \"$PAIR_TOKEN\",
+    \"sharedNodeID\": \"$NODE_B_ID\",
+    \"authToken\": \"$AUTH_TOKEN\"
   }";
 ----
 
 .Example response
 [source,bash]
 ----
-{}
+// @todo
 ----

@@ -1,0 +1,55 @@
+=== *`search`*
+
+The `search` action is recorded when someone searches over federated nodes.
+
+=== *`lookup`*
+
+The `lookup` action is recorded when someone looks up a specific federated node.
+
+=== *`create`*
+
+The `create` action is recorded when someone creates a federated node from input parameters.
+
+=== *`createFromPairingURI`*
+
+The `createFromPairingURI` action is recorded when someone creates a federated node from a pairing URI.
+
+=== *`recreateFromPairingURI`*
+
+The `recreateFromPairingURI` action is recorded when someone recreates a federated node from a pairing URI.
+This occurs when the node described in the pairing URI already exists and is updated with the latest data.
+
+=== *`update`*
+
+The `update` action is recorded when someone updates a federated node.
+
+=== *`delete`*
+
+The `delete` action is recorded when someone deletes a federated node
+
+=== *`undelete`*
+
+The `undelete` action is recorded when someone undeletes (restores) a federated node.
+
+=== *`ottRegenerated`*
+
+The `ottRegenerated` action is recorded when someone regenerates an OTT token for the node.
+
+=== *`pair`*
+
+The `pair` action is recorded when someone requests to pair with another node.
+This occurs when *node B* requests to pair with *node A*.
+
+=== *`handshakeInit`*
+
+The `handshakeInit` action is recorded when *node B* sends a handshake request to *node A*.
+
+=== *`handshakeConfirm`*
+
+The `handshakeConfirm` action is recorded when someone confirms the handshake request.
+This occurs when *node A* accepts the pair request sent by *node B*.
+
+=== *`handshakeComplete`*
+
+The `handshakeComplete` action is recorded when the node handshake is completed.
+This occurs on *node B* when *node A* confirms the handshake request, and the handshake completed successfully.

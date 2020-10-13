@@ -7,23 +7,11 @@ $API_A_BASE
 # Main administrator JWT for node A
 $MAIN_JWT_A
 
-# Node A domain
-$DOMAIN_A
-
-# Node B domain
-$DOMAIN_B
+# Node B federation API base URL
+$API_B_BASE
 
 # Node name
 $NODE_NAME
-
-# Node A nodeID
-$NODE_ID_A
-
-# Node B nodeID
-$NODE_ID_B
-
-# Node URI
-$NODE_URI
 ----
 
 .Example request
@@ -33,8 +21,7 @@ curl -X POST "$API_A_BASE/federation/nodes" \
   -H "authorization: Bearer $MAIN_JWT_A" \
   --header "Content-Type: application/json" \
   --data "{
-    \"myDomain\": \"$DOMAIN_A\",
-    \"domain\": \"$DOMAIN_B\",
+    \"baseURL\": \"$API_B_BASE\",
     \"name\": \"$NODE_NAME\"
   }";
 ----
@@ -42,14 +29,5 @@ curl -X POST "$API_A_BASE/federation/nodes" \
 .Example response
 [source,bash]
 ----
-{
-  "response": {
-    "nodeID": "$NODE_ID_A",
-    "sharedNodeID": "$NODE_ID_B",
-    "name": "\"$NODE_NAME\"",
-    "domain": "\"$DOMAIN_B\"",
-    "status": "\"pending\"",
-    "nodeURI": "\"$NODE_URI\""
-  }
-}
+// @todo...
 ----

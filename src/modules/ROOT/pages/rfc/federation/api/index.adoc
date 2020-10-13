@@ -1,85 +1,73 @@
 = API
 
-== Node pair
+== Federation nodes
 
-=== Create a federated node from a series of parameters
+[#node-search]
+=== *Search*
 
-include::node_create_a.adoc[]
+include::node/search.adoc[]
 
-=== Create a federated node from a node URI
+[#node-create-params]
+=== *Create from params*
 
-include::node_create_b.adoc[]
+include::node/create_params.adoc[]
 
-=== Initialize the handshake
+[#node-create-uri]
+=== *Create from node URI*
 
-include::node_handshake_init.adoc[]
+include::node/create_uri.adoc[]
 
-=== Request the handshake with node A
+[#node-update]
+=== *Update*
 
-include::node_handshake_request.adoc[]
+include::node/update.adoc[]
 
-=== Confirm the requested handshake
+[#node-delete]
+=== *Delete*
 
-include::node_handshake_confirm.adoc[]
+include::node/delete.adoc[]
 
-=== Complete the handshake
+[#node-undelete]
+=== *Undelete*
 
-include::node_handshake_complete.adoc[]
+include::node/undelete.adoc[]
+
+== Node pairing
+
+[#node-pair-create-uri]
+=== *Create node pair URI*
+
+include::node-pair/make_uri.adoc[]
+
+[#node-pair-handshake-init]
+=== *Initialize node handshake*
+
+include::node-pair/handshake_init.adoc[]
+
+[#node-pair-handshake-request]
+=== *Request handshake with node*
+
+include::node-pair/handshake_request.adoc[]
+
+[#node-pair-handshake-confirm]
+=== *Confirm handshake request*
+
+include::node-pair/handshake_confirm.adoc[]
+
+[#node-pair-handshake-complete]
+=== *Complete node handshake*
+
+include::node-pair/handshake_complete.adoc[]
 
 == Origin structures
 
-=== Add module to federation
+// @todo
 
-include::structure_sync__add_module_to_federation.adoc[]
+== Origin data
 
-=== Change sharing fields
-
-include::structure_sync__change_sharing_fields.adoc[]
-
-=== Info about exposed federated module
-
-include::structure_sync__list_exposed_module.adoc[]
-
-=== Remove module from federation
-
-include::structure_sync__remove_module_federation.adoc[]
+// @todo
 
 == Destination structures
 
-=== Info about shared federated module
+// @todo
 
-include::structure_sync__list_shared_module.adoc[]
-
-=== List shared modules
-
-include::structure_sync__list_shared_modules.adoc[]
-
-=== Set module mapping for a module
-
-include::structure_sync__set_module_federation_mapping.adoc[]
-
-=== Get module mapping for a module
-
-include::structure_sync__get_module_federation_mapping.adoc[]
-
-=== Remove module mapping from federation
-
-include::structure_sync__remove_module_federation_mapping.adoc[]
-
-== Structure sync
-
-=== Get master changes
-
-include::structure_sync__master_changes.adoc[]
-
-=== Sync shared module structure
-
-include::structure_sync__sync_shared_module.adoc[]
-
-== Fetch exposed data changes
-
-include::data_sync__data_changes.adoc[]
-
-== Fetch exposed data
-
-include::data_sync__exposed_records.adoc[]

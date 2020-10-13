@@ -4,17 +4,17 @@
 # Base URL of node A api
 $API_A_BASE
 
-# Node A nodeID
-$NODE_ID_A
-
 # Main administrator JWT for node A
 $MAIN_JWT_A
+
+# The federation node we wish to undelete
+$NODE_ID
 ----
 
 .Example request
 [source,bash]
 ----
-curl -X POST "$API_A_BASE/federation/nodes/$NODE_ID_A/handshake-confirm" \
+curl -X POST "$API_A_BASE/federation/nodes/$NODE_ID/undelete" \
   -H "authorization: Bearer $MAIN_JWT_A" \
   --header "Content-Type: application/json";
 ----
@@ -22,5 +22,5 @@ curl -X POST "$API_A_BASE/federation/nodes/$NODE_ID_A/handshake-confirm" \
 .Example response
 [source,bash]
 ----
-{}
+// @todo...
 ----

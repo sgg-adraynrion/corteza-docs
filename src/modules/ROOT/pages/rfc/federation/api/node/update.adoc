@@ -1,0 +1,36 @@
+.Used variables
+[source,bash]
+----
+# Base URL of node A api
+$API_A_BASE
+
+# Main administrator JWT for node A
+$MAIN_JWT_A
+
+# The federation node we wish to update
+$NODE_ID
+
+# Node name
+$NODE_NAME
+
+# Node B federation API base URL
+$API_B_BASE
+----
+
+.Example request
+[source,bash]
+----
+curl -X POST "$API_A_BASE/federation/nodes/$NODE_ID" \
+  -H "authorization: Bearer $MAIN_JWT_A" \
+  --header "Content-Type: application/json" \
+  --data "{
+    \"name\": \"$NODE_NAME\",
+    \"baseURL\": \"$API_B_BASE\"
+  }";
+----
+
+.Example response
+[source,bash]
+----
+// @todo...
+----

@@ -56,13 +56,15 @@ include::glossary.adoc[]
 
 include::security.adoc[]
 
-include::logging.adoc[]
+// include::logging.adoc[]
 
 include::node_pair.adoc[]
 
 include::structure_sync.adoc[]
 
 include::data_sync.adoc[]
+
+include::actionlog/index.adoc[]
 
 include::api/index.adoc[]
 

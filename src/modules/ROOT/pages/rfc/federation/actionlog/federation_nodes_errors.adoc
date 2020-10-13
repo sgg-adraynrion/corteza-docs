@@ -1,0 +1,21 @@
+=== *`notFound`*
+
+The searched node does not exist.
+
+=== *`pairingURIInvalid`*
+
+The pairing URI is invalid.
+
+=== *`pairingURITokenInvalid`*
+
+The pairing URI OTT token is invalid.
+
+=== *`pairingURISourceIDInvalid`*
+
+The pairing URI source ID is invalid.
+This is the *nodeID* on the source node (the one that generated the URI).
+
+=== *`pairingTokenInvalid`*
+
+The pairing token is invalid.
+This can occur at the handshake initialization step, where this token is used to validate the request.

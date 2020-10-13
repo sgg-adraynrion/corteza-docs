@@ -1,0 +1,29 @@
+.Store definition for `federation nodes`.
+[cols="1s,1l,3a"]
+|===
+|Field |Type |Description
+
+|ID |uint64 |Specifies the node's identifier.
+|Name |string |Specifies the node's name.
+|SharedNodeID |uint64 |Specifies the paired node's identifier.
+|BaseURL |string |Specifies the base URL of the paired node.
+|Status |string |Specifies the node's status.
+|PairToken |string |Specifies the OTT token that should be used for the node pairing process.
+|AuthToken |string |Specifies the auth token that should be used when accessing protected resources on the paired node.
+|CreatedBy |uint64 |Specifies who created the federated node.
+|UpdatedBy |uint64 |Specifies who updated the federated node.
+|DeletedBy |uint64 |Specifies who deleted the federated node.
+|CreatedAt |timestamp |Specifies when the node was created.
+|UpdatedAt |timestamp |Specifies when the node was updated.
+|DeletedAt |timestamp |Specifies when the node was deleted.
+|===
+
+.Store operations for `federation nodes`:
+* `SearchFederationNodes`
+* `LookupFederationNodeByID`
+* `CreateFederationNode`
+* `UpdateFederationNode`
+* `UpsertFederationNode`
+* `DeleteFederationNode`
+* `DeleteFederationNodeByID`
+* `TruncateFederationNodes`

@@ -1,0 +1,29 @@
+.Used variables:
+[source,bash]
+----
+# Node's base URL
+$API_BASE
+
+# Node's authentication token
+$NODE_JWT
+
+# Search by query (optional)
+$QUERY
+
+# Search by node status (optional)
+$STATUS
+----
+
+.Example request
+[source,bash]
+----
+curl -X GET "$API_BASE/federation/nodes/?query=$QUERY&status=$STATUS" \
+  -H "authorization: Bearer $NODE_JWT" \
+  --header "Content-Type: application/json";
+----
+
+.Example response
+[source,bash]
+----
+// @todo
+----
