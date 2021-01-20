@@ -1,0 +1,495 @@
+= YAML reference
+
+== Compose
+
+=== ComposeNamespace ($ComposeNamespace)
+
+.Document definition:
+[source,yaml]
+----
+namespaces:
+  <slug>: string <unique, must pass constraint checks>
+    id: any <unique>
+    name: string <unique>
+    enabled: boolean <true/false, yes/no>
+    meta:
+      subtitle: string
+      description: string
+    createdAt: datetime
+    updatedAt: datetime
+    deletedAt: datetime
+
+    modules: []$ComposeModule
+    charts: []$ComposeChart
+    records: []$ComposeRecord
+    pages: []$ComposePage
+    allow: []$ResourceRBAC
+    deny: []$ResourceRBAC
+----
+
+.Namespace slug must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+=== ComposeModule ($ComposeModule)
+
+.Document definition:
+[source,yaml]
+----
+namespace: identifier <any namespace identifier>
+modules:
+  <handle>: string <unique, must pass constraint checks>
+    id: any <unique>
+    name: string <unique>
+    meta: any @todo
+    fields:
+      <name>: string <unique, must pass constraint checks>
+        id: any <unique>
+        place: number
+        kind: string <Bool, DateTime, Email, File, Number, Record, Select, String, Url, User>
+        label: string <unique>
+        options: any @todo
+        private: boolean <true/false, yes/no>
+        required: boolean <true/false, yes/no>
+        visible: boolean <true/false, yes/no>
+        multi: boolean <true/false, yes/no>
+        defaultValue: any @todo
+        expressions:
+          valueExpr: expression
+          sanitizers:
+            - expression
+          validators:
+            - test: expression
+              error: string
+          disableDefaultValidators: boolean <true/false, yes/no>
+          formatters:
+            - expression
+          disableDefaultFormatters: boolean <true/false, yes/no>
+
+        createdAt: datetime
+        updatedAt: datetime
+        deletedAt: datetime
+
+    createdAt: datetime
+    updatedAt: datetime
+    deletedAt: datetime
+
+    records: []$ComposeRecord
+    allow: []$ResourceRBAC
+    deny: []$ResourceRBAC
+----
+
+.Module handle must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+.Module field name must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+=== ComposeRecord ($ComposeRecord)
+
+.Document definition:
+[source,yaml]
+----
+namespace: identifier <any namespace identifier>
+records:
+  <module identifier>: <moduleID, handle, name>
+    - values:
+        <field name, string>: <field value, any>
+        <field name, string>: <field value, any>
+        ...
+      createdAt: datetime
+      updatedAt: datetime
+      deletedAt: datetime
+      createdBy: user <userID, handle, email>
+      updatedBy: user <userID, handle, email>
+      deletedBy: user <userID, handle, email>
+      ownedBy: user <userID, handle, email>
+----
+
+=== ComposePage ($ComposePage)
+
+.Document definition:
+[source,yaml]
+----
+namespace: identifier <any namespace identifier>
+pages:
+  <handle>: string <unique, must pass constraint checks>
+    id: any <unique>
+    module: identifier <any module identifier, omit if not record page>
+    title: string <unique>
+    description: string
+    blocks:
+      - title: string
+        description: string
+        options: pageBlockConfig <see bellow>
+        style: any @todo
+        kind: string <Content, Metric, Chart, SocialFeed, Record, RecordList, Automation, Calendar, File, RecordOrganizer, IFrame>
+        xywh: [number, number, number, number]
+    children: []$ComposePage
+    visible: boolean <true/false, yes/no>
+    weight: number <set [-9.223.372.036.854.775.808, 9.223.372.036.854.775.807]>
+    createdAt: datetime
+    updatedAt: datetime
+    deletedAt: datetime
+----
+
+.Page handle must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+.Page block configuration based on type:
+[cols="1m,5a"]
+|===
+|Block kind|Options structure
+
+| Content
+|
+[source,yaml]
+----
+body: string
+----
+
+| Metric
+|
+[source,yaml]
+----
+metrics:
+  - label: string
+    module: identifier <any module identifier>
+    dimensionField: identifier <any module field identifier>
+    dateFormat: string
+    filter: string
+    bucketSize: string
+    metricField: string
+    operation: string <countd, sum, max, min, avg>
+    numberFormat: string
+    prefix: string
+    suffix: string
+    transformFx: string
+    labelStyle:
+      color: string <hex color>
+      backgroundColor: string <hex color>
+      fontSize: string <size in px>
+    valueStyle:
+      color: string <hex color>
+      backgroundColor: string <hex color>
+      fontSize: string <size in px>
+----
+
+| Chart
+|
+[source,yaml]
+----
+chart: identifier <any chart identifier>
+----
+
+| SocialFeed
+|
+[source,yaml]
+----
+module: identifier <any module identifier>
+fields:
+  - identifier <any module field identifier>
+  - identifier <any module field identifier>
+  ...
+profileSourceField: identifier <any module field identifier>
+profileUrl: URL
+----
+
+| Record
+|
+[source,yaml]
+----
+fields:
+  - identifier <any module field identifier>
+  - identifier <any module field identifier>
+  ...
+----
+
+| RecordList
+|
+[source,yaml]
+----
+module: identifier <any module identifier>
+prefilter: string
+presort: string
+fields:
+  - identifier <any module field identifier>
+  - identifier <any module field identifier>
+  ...
+hideHeader: boolean <true/false, yes/no>
+hideAddButton: boolean <true/false, yes/no>
+hideSearch: boolean <true/false, yes/no>
+hidePaging: boolean <true/false, yes/no>
+hideSorting: boolean <true/false, yes/no>
+hideRecordReminderButton: boolean <true/false, yes/no>
+hideRecordCloneButton: boolean <true/false, yes/no>
+hideRecordEditButton: boolean <true/false, yes/no>
+hideRecordViewButton: boolean <true/false, yes/no>
+allowExport: boolean <true/false, yes/no>
+perPage: number
+fullPageNavigation: boolean <true/false, yes/no>
+showTotalCount: boolean <true/false, yes/no>
+
+editable: boolean <true/false, yes/no>
+draggable: boolean <true/false, yes/no>
+positionField: identifier <any module field identifier>
+refField: identifier <any module field identifier>
+editFields:
+  - identifier <any module field identifier>
+  - identifier <any module field identifier>
+  ...
+
+selectable: boolean <true/false, yes/no>
+selectMode: string <multi, single, range>
+
+selectionButtons:
+  - script: identifier <automation script name>
+    resourceType: string <compose:record>
+    label: string
+    variant: string <primary, secondary, light, dark, success, danger, warning>
+    enabled: boolean <true/false, yes/no>
+----
+
+| Automation
+|
+[source,yaml]
+----
+buttons:
+  - script: identifier <automation script name>
+    resourceType: string <compose:record>
+    label: string
+    variant: string <primary, secondary, light, dark, success, danger, warning>
+    enabled: boolean <true/false, yes/no>
+sealed: boolean <true/false, yes/no>
+----
+
+| Calendar
+|
+[source,yaml]
+----
+defaultView: string <dayGridMonth, dayGridMonth, timeGridWeek, timeGridDay, listMonth>
+feeds:
+  - resource: string <record, reminder>
+    startField: identifier <any module field identifier>
+    endField: identifier <any module field identifier>
+    titleField: identifier <any module field identifier>
+    options:
+      color: string <hex color>
+      prefilter: string
+      module: identifier <any module identifier>
+    allDay: boolean <true/false, yes/no>
+header:
+  hide: boolean <true/false, yes/no>
+  views: string <dayGridMonth, dayGridMonth, timeGridWeek, timeGridDay, listMonth>
+  hidePrevNext: boolean <true/false, yes/no>
+  hideToday: boolean <true/false, yes/no>
+  hideTitle: boolean <true/false, yes/no>
+locale: string
+----
+
+| File
+|
+[source,yaml]
+----
+mode: string <list, grid, single, gallery>
+attachments: (! currently only existing attachments are supported)
+  - identifier <attachmentID>
+----
+
+| RecordOrganizer
+|
+[source,yaml]
+----
+module: identifier <any module identifier>
+labelField: identifier <any module field identifier>
+descriptionField: identifier <any module field identifier>
+filter: string
+positionField: identifier <any module field identifier>
+groupField: identifier <any module field identifier>
+group: string
+----
+
+| IFrame
+|
+[source,yaml]
+----
+srcField: identifier <any module field identifier>
+src: URL <Twitter feed URL>
+wrap: string <Plain, Card>
+----
+
+|===
+
+=== ComposeChart ($ComposeChart)
+
+.Document definition:
+[source,yaml]
+----
+namespace: identifier <any namespace identifier>
+charts:
+  - id: any <unique>
+    handle: string <unique, must pass constraint checks> @todo
+    name: string <unique>
+    config: any @todo
+    createdAt: datetime
+    updatedAt: datetime
+    deletedAt: datetime
+----
+
+== System
+
+=== Role ($Role)
+
+.Document definition:
+[source,yaml]
+----
+roles:
+  <handle>: string <unique, must pass constraint checks>
+    id: any <unique>
+    name: string <unique>
+    createdAt: datetime
+    updatedAt: datetime
+    archivedAt: datetime
+    deletedAt: datetime
+----
+
+.Role handle must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+=== User ($User)
+
+.Document definition:
+[source,yaml]
+----
+users:
+  <handle>: string <unique, must pass constraint checks>
+    id: any <unique>
+    username: string <unique, must pass constraint checks> @todo
+    email: string <unique, must be valid email> @todo
+    name: string
+    meta:
+      Avatar: string
+    emailConfirmed: boolean <true/false, yes/no>
+    createdAt: datetime
+    updatedAt: datetime
+    suspendedAt: datetime
+    deletedAt: datetime
+----
+
+.User handle must:
+. start with a character,
+. contain only characters, numbers, _ (underscore), - (dash) or . (dot),
+. end with a character or a number.
+
+=== Application ($Application)
+
+.Document definition:
+[source,yaml]
+----
+applications:
+  - id: any <unique>
+    name: string <unique>
+    enabled: boolean <true/false, yes/no>
+    unify:
+      name: string
+      listed: boolean <true/false, yes/no>
+      icon: string
+      logo: string
+      url: url
+      config: string <stringified json>
+      order: number <positive number, 0 inclusive>
+    createdAt: datetime
+    updatedAt: datetime
+    deletedAt: datetime
+----
+
+=== Setting ($Setting)
+
+.Document definition:
+[source,yaml]
+----
+settings:
+  <setting key, string>: <setting value, any>
+  <setting key, string>: <setting value, any>
+  ...
+----
+
+=== Resource RBAC ($ResourceRBAC)
+
+.Definition:
+[source,yaml]
+----
+<permit>: <string; allow, deny>
+  <identifier>: <any role identifier>
+    - <operation; string; @todo>
+----
+
+== Messaging
+
+=== Messaging channel ($MessagingChannel)
+
+.Document definition:
+[source,yaml]
+----
+channels:
+  - channelID: any <unique>
+    name: string <unique>
+    topic: string
+    type: string <public, private, group>
+    meta: any @todo
+    membershipPolicy: string <featured, forced; omit for default>
+    creatorID: identifier <any user identifier>
+    createdAt: datetime
+    updatedAt: datetime
+    archivedAt: datetime
+    deletedAt: datetime
+----
+
+== All in one
+
+.Document definition:
+[source,yaml]
+----
+// Compose
+namespaces:
+  []$ComposeNamespace
+modules:
+  []$ComposeModule
+records:
+  []$ComposeRecord
+pages:
+  []$ComposePage
+charts:
+  []$ComposeChart
+
+// Messaging
+channels:
+  []$MessagingChannel
+
+// System
+roles:
+  []$Role
+users:
+  []$User
+applications:
+  []$Application
+settings:
+  []$Setting
+allow:
+  <identifier>: <any role identifier>
+    <resource>: <resourceType>
+      - <operation; string; @todo>
+deny:
+  <identifier>: <any role identifier>
+    <resource>: <resourceType>
+      - <operation; string; @todo>
+----

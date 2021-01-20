@@ -1,0 +1,11 @@
+= Guidelines (WIP)
+
+== Tips
+
+.Document definition tips:
+. use the "compact" form
+. omit default/zero values
+. use handles, slugs (human-friendly identifiers)
+. use multiple smaller files instead of 1 large file
+
+== Recommended setup

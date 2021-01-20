@@ -1,0 +1,15 @@
+Draft tasks:
+  - alternative mapping forms
+  ✔ add slug, hanle, ... constraint reference
+  - mark required fields
+  - add allowed date time formats
+  - module field options
+  - module field default value
+  - envoy flags
+  - note valid identifiers per resource
+  - compose page blocks
+  ✔ RBAC
+  ✔ chart config
+  ✔ messaging channels
+  - user avatar
+  - available settings
