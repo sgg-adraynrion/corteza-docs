@@ -26,7 +26,24 @@ You are not required to have any BPMN knowledge, although it might be helpful.
 
 To create a workflow, navigate to your {PRODUCT_NAME} instance (for example http://latest.cortezaproject.org/) and click ok tne "Workflows" application.
 
-image::workflow/accessing-workflows-1.png[role="data-zoomable"]
+[annotation,role="data-zoomable"]
+----
+{
+  "image": "workflow/accessing-workflows-1.png",
+  "width": "1920",
+  "height": "1080",
+  "annotations": [{
+    "kind": "box",
+    "x": "819",
+    "y": "506",
+    "w": "284",
+    "h": "270",
+    "cfg": {
+      "variant": "primary"
+    }
+  }]
+}
+----
 
 A new screen showing you all of the available workflows will appear.
 
