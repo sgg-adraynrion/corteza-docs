@@ -67,6 +67,8 @@
 
 ** xref:api-gw/index.adoc[]
 *** xref:api-gw/workflow-processing.adoc[]
+*** References
+**** xref:api-gw/references/headers.adoc[]
 
 ** xref:reporting/index.adoc[]
 *** xref:reporting/expr-reference.adoc[]

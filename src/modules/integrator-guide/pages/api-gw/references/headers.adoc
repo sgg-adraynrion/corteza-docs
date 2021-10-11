@@ -1,0 +1,288 @@
+include::ROOT:partial$variables.adoc[]
+
+= General HTTP headers
+
+Your HTTP requests may use arbitrary HTTP headers to cover your needs.
+This section covers some of the standard HTTP headers that may be used with API gateway.
+
+.A list of general HTTP headers
+[cols="1m,5a"]
+|===
+| [#general-header-cache-control]#<<general-header-cache-control,Cache-Control>>#
+|
+.Request:
+[source,bash]
+----
+Cache-control: [no-cache, no-store, max-age = seconds, max-stale = seconds, min-fresh, 	no-transform, only-if-cached]
+----
+
+.Response:
+[source,bash]
+----
+Cache-control: [public, private, no-cache, no-store, no-transform, must-revalidate, proxy-revalidate, max-age = seconds, s-maxage = seconds]
+----
+
+| [#general-header-connection]#<<general-header-connection,Connection>>#
+|
+.Options:
+[source,bash]
+----
+Connection: [close, keep-alive]
+----
+
+| [#general-header-date]#<<general-header-date,Date>>#
+|
+.Formats:
+* RFC 822, updated by RFC 1123 (`Sun, 06 Nov 1994 08:49:37 GMT`)
+* RFC 850, obsoleted by RFC 1036 (`Sunday, 06-Nov-94 08:49:37 GMT`)
+* ANSI C’s asctime() format (`Sun Nov 6 08:49:37 1994`)
+
+| [#general-header-Pragma]#<<general-header-Pragma,Pragma>>#
+|
+.Options:
+[source,bash]
+----
+Pragma: [no-cache, no-cache]
+----
+
+| [#general-header-Trailer]#<<general-header-Trailer,Trailer>>#
+|
+.Options:
+[source,bash]
+----
+Pragma: [no-cache, no-cache]
+----
+
+| [#general-header-Trailer]#<<general-header-Trailer,Trailer>>#
+|
+
+
+*Options*
+[source,bash]
+----
+Pragma: [no-cache, no-cache]
+----
+
+
+Message header fields listed in the Trailer header field must not include the following header fields:
+
+Transfer-Encoding
+
+Content-Length
+
+
+
+
+| [#general-header-Transfer-Encoding]#<<general-header-Transfer-Encoding,Transfer-Encoding>>#
+|
+
+Message header fields listed in the Trailer header field must not include the following header fields:
+
+* Transfer-Encoding
+* Content-Length
+* Trailer
+* Transfer-Encoding
+
+
+
+
+
+
+| [#general-header-Upgrade]#<<general-header-Upgrade,Upgrade>>#
+|
+
+
+*Options*
+[source,bash]
+----
+Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
+---- 
+
+
+
+| [#general-header-Via]#<<general-header-Via,Via>>#
+|
+
+
+*Options*
+[source,bash]
+----
+Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
+----
+
+
+
+
+
+| [#general-header-Warning]#<<general-header-Warning,Warning>>#
+|
+
+The Warning general-header is used to carry additional information about the status or transformation of a message which might not be reflected in the message
+
+*Options*
+[source,bash]
+----
+Warning : warn-code SP warn-agent SP warn-text SP warn-date
+----
+
+|===
+// end table
+
+
+
+
+
+=== Client Request Headers
+.A list of available Client Request Headers:
+
+.A list of available General Headers:
+[cols="1m,5a"]
+|===
+| [#general-header-Accept]#<<general-header-Accept,Accept>>#
+|
+
+The Accept request-header field can be used to specify certain media types which are acceptable for the response
+
+*Request*
+[source,bash]
+----
+Accept: type/subtype [q=qvalue]
+----
+
+
+*Response*
+[source,bash]
+----
+Accept: text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c
+----
+
+
+| [#general-header-Accept-Charset]#<<general-header-Accept-Charset,Accept-Charset>>#
+|
+
+
+The Accept-Charset request-header field can be used to indicate what character sets are acceptable for the response
+
+[source,bash]
+----
+Accept-Charset: character_set [q=qvalue]
+Accept-Charset: iso-8859-5, unicode-1-1; q=0.8
+Accept-Encoding: encoding types
+Accept-Encoding
+----
+
+The Accept-Encoding request-header field is similar to Accept, but restricts the content-codings that are acceptable in the response.
+
+[source,bash]
+----
+Accept-Encoding: encoding types
+Accept-Encoding: compress, gzip
+Accept-Encoding:
+Accept-Encoding: *
+Accept-Encoding: compress;q=0.5, gzip;q=1.0
+Accept-Encoding: gzip;q=1.0, identity; q=0.5, *;q=0
+---- 
+
+
+
+| [#general-header-Authorization]#<<general-header-Authorization,Authorization>>#
+|
+
+The Authorization request-header field value consists of credentials containing the authentication information of the user agent for the realm of the resource being requested.
+
+[source,bash]
+----
+Authorization : credentials
+
+Authorization: BASIC Z3Vlc3Q6Z3Vlc3QxMjM=
+----
+
+
+
+
+| [#general-header-Cookie]#<<general-header-Cookie,Cookie>>#
+|
+
+
+The Cookie request-header field value contains a name/value pair of information stored for that URL
+
+[source,bash]
+----
+Cookie: name=value
+Cookie: name1=value1;name2=value2;name3=value3
+----
+
+|===
+
+
+
+
+
+
+=== Server Response Headers
+
+[cols="1m,5a"]
+|===
+
+| [#general-header-Set-Cookie]#<<general-header-Set-Cookie,Set-Cookie>>#
+|
+Set-Cookie
+
+The Set-Cookie response-header field contains a name/value pair of information to retain for this URL.
+
+*Request*
+[source,bash]
+----
+Set-Cookie: name1=value1,name2=value2; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+----
+
+
+
+
+
+
+
+| [#general-header-Set-Cookie]#<<general-header-Set-Cookie,Set-Cookie>>#
+|
+
+The Set-Cookie response-header field contains a name/value pair of information to retain for this URL.
+
+*Request*
+[source,bash]
+----
+Set-Cookie: name1=value1,name2=value2; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+----
+
+*Response*
+[source,bash]
+----
+Accept: text/plain; q=0.5, text/html, text/x-dvi; q=0.8, text/x-c
+----
+
+
+| [#general-header-WWW-Authenticate]#<<general-header-WWW-Authenticate,WWW-Authenticate>>#
+|
+
+
+
+The WWW-Authenticate response-header field must be included in 401 (Unauthorized) response messages. The field value consists of at least one challenge that indicates the authentication scheme(s) and parameters applicable to the Request-URI.
+
+*Request*
+[source,bash]
+----
+WWW-Authenticate : challenge
+----
+
+
+*Response*
+[source,bash]
+----
+WWW-Authenticate: BASIC realm="Admin"
+----
+
+
+
+
+
+
+|===
