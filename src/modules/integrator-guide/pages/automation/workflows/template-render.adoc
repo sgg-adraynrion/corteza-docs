@@ -1,0 +1,13 @@
+include::ROOT:partial$variables.adoc[]
+
+= Rendering templates
+:attachment-path: ../../_attachments/workflow/
+
+@todo examples; more content
+
+== PDF render options
+
+Render options allow you to specify parameters of the resulting PDF document.
+Render options are provided with a variable of the `RenderOptions` type.
+
+Refer to the xref:integrator-guide:templates/index.adoc#_the_preview[menu:Integrator Guide[Templates]] for a complete reference on the available options.
